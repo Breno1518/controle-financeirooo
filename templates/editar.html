@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Lançamento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Editar Lançamento</h1>
+
+    <form method="POST">
+
+        <label>Descrição:</label>
+        <input
+            type="text"
+            name="descricao"
+            value="{{ lancamento[1] }}"
+            required
+        >
+
+        <label>Valor:</label>
+        <input
+            type="number"
+            step="0.01"
+            name="valor"
+            value="{{ lancamento[2] }}"
+            required
+        >
+
+        <label>Tipo:</label>
+
+        <select name="tipo">
+
+            <option
+                {% if lancamento[3] == 'Receita' %}
+                selected
+                {% endif %}
+            >
+                Receita
+            </option>
+
+            <option
+                {% if lancamento[3] == 'Despesa' %}
+                selected
+                {% endif %}
+            >
+                Despesa
+            </option>
+
+        </select>
+
+        <button type="submit">
+            Salvar Alterações
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
